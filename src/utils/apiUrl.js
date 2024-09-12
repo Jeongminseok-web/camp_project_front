@@ -1,5 +1,5 @@
 const GET_AREAS_API_URL = "https://campback.thxmin.com/get_areas";
-const POST_AREAS_API_URL = "https://campback.thxmin.com/get_areas";
+const POST_AREAS_API_URL = "https://campback.thxmin.com/post_areas";
 const DELETE_AREAS_API_URL = "https://campback.thxmin.com/delete_area";
 //
 

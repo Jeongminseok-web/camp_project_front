@@ -30,7 +30,7 @@ export const navMenus = [
     label: "Review",
     to: "/review",
     icon: <TbStarsFilled className="w-5 h-5" />,
-    idx: 4,
+    idx: 5,
   },
 ];
 

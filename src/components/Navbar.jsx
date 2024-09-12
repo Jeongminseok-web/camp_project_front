@@ -11,8 +11,8 @@ const Navbar = ({ menuIdx }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authData);
   const { name } = user || {};
-  const googleClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
   const [isAuth, setIsAuth] = useState(false);
+  const googleClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 
   const handleLoginSucess = useCallback((response) => {
     const decoded = jwtDecode(response.credential);

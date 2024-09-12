@@ -25,22 +25,6 @@ let globalColor = [
   "#ADBDFF",
 ];
 
-// const simplifyRegionName = (name) => {
-//   if (name.includes("도")) return name.replace("도", "");
-//   if (name.includes("특별시")) return name.replace("특별시", "");
-//   if (name.includes("광역시")) return name.replace("광역시", "");
-//   return name; // 기본적으로 원래 이름을 반환
-// };
-// const simplifyRegionName = (name) => {
-//   // name이 문자열인지 확인
-//   if (typeof name !== "string") return "";
-
-//   if (name.includes("도")) return name.replace("도", "");
-//   if (name.includes("특별시")) return name.replace("특별시", "");
-//   if (name.includes("광역시")) return name.replace("광역시", "");
-//   return name; // 기본적으로 원래 이름을 반환
-// };
-
 const KakaoMap = ({ onRegionClick }) => {
   const [geoList, setGeoList] = useState([]);
 
@@ -71,37 +55,6 @@ const KakaoMap = ({ onRegionClick }) => {
     setGeoList(data);
   }, []);
   //   const { features } = dataJson;
-
-  //   const data = [];
-
-  //   for (let index = 0; index < features.length; index++) {
-  //     const item = features[index];
-  //     const { geometry, properties } = item;
-  //     const { CTP_KOR_NM } = properties;
-  //     const { coordinates } = geometry;
-
-  //     const pathList = [];
-  //     for (let areaList of coordinates) {
-  //       const path = [];
-  //       for (let area of areaList) {
-  //         path.push({
-  //           lng: area[0],
-  //           lat: area[1],
-  //         });
-  //       }
-  //       pathList.push(path);
-  //     }
-
-  //     data.push({
-  //       name: CTP_KOR_NM,
-  //       path: pathList,
-  //       isHover: false,
-  //       key: `${CTP_KOR_NM}-${index}`,
-  //     });
-  //   }
-  //   console.log("GeoList:", data);
-  //   setGeoList(data);
-  // }, []);
 
   return (
     <div className="w-[500px] h-[500px] rounded-full">

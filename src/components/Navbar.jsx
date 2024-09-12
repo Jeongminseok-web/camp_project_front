@@ -50,7 +50,7 @@ const Navbar = ({ menuIdx }) => {
   };
 
   return (
-    <nav className="bg-white xl:w-[10%] md:w-[20%] w-full h-[100%] flex flex-col justify-between border border-gray-200 px-2 overflow-hidden">
+    <nav className="bg-white lg:w-[15%] md:w-[20%] w-full h-[100%] flex flex-col justify-between border border-gray-200 px-2 overflow-hidden">
       <div className="menubar-wrapper flex justify-normal">
         <ul className="flex flex-col gap-y-3 text-md font-semibold mt-14">
           {navMenus.map((menu, idx) => (

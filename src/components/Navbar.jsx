@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../redux/slices/authSlice";
 import { jwtDecode } from "jwt-decode";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 
 const Navbar = ({ menuIdx }) => {
   const dispatch = useDispatch();
@@ -14,11 +15,19 @@ const Navbar = ({ menuIdx }) => {
   const [isAuth, setIsAuth] = useState(false);
   const googleClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
 
-  const handleLoginSucess = useCallback((response) => {
-    const decoded = jwtDecode(response.credential);
-    dispatch(login({ authData: decoded }));
-    setIsAuth(true);
-  });
+  const handleLoginSuccess = useCallback(
+    (credentialResponse) => {
+      try {
+        const decoded = jwtDecode(credentialResponse.credential); // 'credential'에서 JWT 토큰 추출
+        dispatch(login({ authData: decoded }));
+        setIsAuth(true);
+        // console.log('Sign in success', credentialResponse);
+      } catch (error) {
+        console.error("Login success handling error", error);
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("authData"));
@@ -28,23 +37,11 @@ const Navbar = ({ menuIdx }) => {
     }
   }, [dispatch]);
 
-  useEffect(() => {
-    if (window.google) {
-      window.google.accounts.id.initialize({
-        client_id: googleClientId,
-        callback: handleLoginSucess,
-      });
-    } else {
-      console.log("Google object is not available");
-    }
-  }, [googleClientId, handleLoginSucess]);
-
-  const handleLoginClick = () => {
-    window.google.accounts.id.prompt();
+  const handleLoginError = (error) => {
+    console.log("Google login error", error);
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("authData");
     dispatch(logout());
     setIsAuth(false);
   };
@@ -91,23 +88,29 @@ const Navbar = ({ menuIdx }) => {
 
       <div className="login-wrapper">
         {isAuth ? (
-          <button
-            onClick={handleLogoutClick}
-            className="flex justify-center items-center gap-2
-           bg-white text-black py-2 px-4 mb-4 rounded-md font-semibold border border-gray-200"
-          >
-            <FcGoogle className="h-5 w-5" />
-            {name}님 Logout
-          </button>
+          <div className="w-4/5 flex flex-center">
+            <button
+              onClick={handleLogoutClick}
+              className="font-customFontEn flex justify-center items-center gap-2 bg-white text-gray-900 py-3 px-4 rounded-md w-full"
+            >
+              <FcGoogle className="h-5 w-5" />
+              <span className="text-sm">{name}님 Logout</span>
+            </button>
+          </div>
         ) : (
-          <button
-            onClick={handleLoginClick}
-            className="flex justify-center items-center gap-2
-           bg-white text-black py-2 px-4 rounded-md font-semibold"
-          >
-            <FcGoogle className="h-5 w-5" />
-            Login With Google
-          </button>
+          <div className="w-4/5 flex flex-center login-btn">
+            <GoogleOAuthProvider clientId={googleClientId}>
+              <GoogleLogin
+                onSuccess={handleLoginSuccess}
+                onError={handleLoginError}
+              />
+              <button className="font-customFontEn flex justify-center items-center gap-2 bg-white text-gray-900 py-3 px-4 rounded-md w-full">
+                <FcGoogle className="h-5 w-5" />
+                <span className="text-sm">Google Login</span>
+              </button>
+            </GoogleOAuthProvider>
+            {/* <button onClick={() => handleGoogleLogin()}>Login with Google</button> */}
+          </div>
         )}
       </div>
     </nav>

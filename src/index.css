@@ -10,11 +10,11 @@
 
 body {
   background: rgb(252, 252, 252);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .test2 {
-  font-family: 'Nerko One', cursive;
+  font-family: "Nerko One", cursive;
 }
 
 .page-section {
@@ -39,6 +39,29 @@ body {
 }
 
 .custom-info-window {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
+}
+
+.login-btn {
+  position: relative;
+  border-radius: 0.25rem;
+}
+
+.login-btn > div {
+  width: 100%;
+}
+
+.login-btn button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.login-btn iframe {
+  opacity: 0;
+  position: absolute !important;
+  width: 100% !important;
+  z-index: 99;
 }

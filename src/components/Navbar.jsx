@@ -3,6 +3,7 @@ import { GiCampingTent } from "react-icons/gi";
 import { navMenus } from "../utils/data";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { FaTree } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../redux/slices/authSlice";
 import { jwtDecode } from "jwt-decode";
@@ -12,8 +13,8 @@ const Navbar = ({ menuIdx }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authData);
   const { name } = user || {};
-  const [isAuth, setIsAuth] = useState(false);
   const googleClientId = process.env.REACT_APP_AUTH_CLIENT_ID;
+  const [isAuth, setIsAuth] = useState(false);
 
   const handleLoginSuccess = useCallback(
     (credentialResponse) => {
@@ -47,7 +48,7 @@ const Navbar = ({ menuIdx }) => {
   };
 
   return (
-    <nav className="bg-white lg:w-[15%] md:w-[20%] w-full h-[100%] flex flex-col justify-between border border-gray-200 px-2 overflow-hidden">
+    <nav className="bg-white xl:w-[10%] md:w-[20%] w-full h-[100%] flex flex-col justify-between border border-gray-200 px-2 overflow-hidden">
       <div className="menubar-wrapper flex justify-normal">
         <ul className="flex flex-col gap-y-3 text-md font-semibold mt-14">
           {navMenus.map((menu, idx) => (

@@ -13,11 +13,12 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Create .env file
+      - name: Create .env oAuth file
         run: |
           touch .env
           echo "${{ secrets.REACT_APP_AUTH_CLIENT_ID }}" > .env
-          echo "${{ secrets.REACT_APP_GOOGLE_MAP_KEY }}" > .env
+      - name: Create .env Google Map file
+        run: echo "${{ secrets.REACT_APP_GOOGLE_MAP_KEY }}" > .env
       - name: Sign in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image

@@ -23,7 +23,7 @@ const ReviewItem = ({ task }) => {
 
   const defaultImage = process.env.PUBLIC_URL + "/campimg.png";
   // 서버의 이미지 URL 기본 경로 설정
-  const BASE_IMAGE_URL = "http://localhost:8000";
+  const BASE_IMAGE_URL = "https://campback.thxmin.com";
   // 서버 이미지 URL 설정
   const imageUrl = (imagePath) => `${BASE_IMAGE_URL}${imagePath}`;
 

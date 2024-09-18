@@ -70,7 +70,7 @@ const ReviewModal = ({ closeModal, addReview }) => {
       });
 
       try {
-        const response = await fetch("http://localhost:8000/post_tasks", {
+        const response = await fetch("https://campback.thxmin.com/post_tasks", {
           method: "POST",
           body: formData,
         });

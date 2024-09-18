@@ -4,6 +4,7 @@ import Area from "./components/Area";
 import Theme from "./components/Theme";
 import Hot from "./components/Hot";
 import Visited from "./components/Visited";
+import Review from "./components/Review";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/theme" element={<Theme />} />
           <Route path="/hot" element={<Hot />} />
           <Route path="/visited" element={<Visited />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
 
         <ToastContainer

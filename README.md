@@ -23,5 +23,7 @@
 
 
 프로젝트 참여자 깃허브  
-정민석 : ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/jeongmindol  
-최민경 : ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/choimings
+
+![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/jeongmindol  
+
+![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/choimings

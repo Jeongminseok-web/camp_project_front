@@ -22,6 +22,6 @@
 - 본인이 방문한 캠핑장 리뷰를 작성하여 다른 사용자들도 해당 캠핑장을 확인 가능
 
 
-프로젝트 참여자 깃허브
-정민석 : https://github.com/jeongmindol
-최민경 : https://github.com/choimings
+프로젝트 참여자 깃허브  
+정민석 : ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/jeongmindol  
+최민경 : ![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/choimings

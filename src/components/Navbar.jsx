@@ -88,7 +88,7 @@ const Navbar = ({ menuIdx }) => {
         </div>
       </nav>
 
-      <div className="login-wrapper">
+      <div className="login-wrapper pb-5">
         {isAuth ? (
           <div className="w-4/5 flex flex-center">
             <button

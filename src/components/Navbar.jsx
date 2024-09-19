@@ -72,7 +72,7 @@ const Navbar = ({ menuIdx }) => {
 
       <nav className="bg-white dark:bg-gray-900 fixed w-full h-[50px] z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div className="header-wrapper flex gap-x-2 items-center ml-5">
-          <GiCampingTent className="w-10 h-10 mt-1 text-white" />
+          <GiCampingTent className="w-10 h-10 mt-1 text-cyan-400" />
           <span
             className="text-xl font-bold bg-gradient-to-r
          "

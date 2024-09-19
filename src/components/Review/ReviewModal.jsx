@@ -24,7 +24,7 @@ const ReviewModal = ({ closeModal, addReview }) => {
     // const newImages = files.map((file) => URL.createObjectURL(file));
     setImages((prevImages) => [...prevImages, ...files]);
 
-    console.log(images);
+    // console.log(images);
 
     // 첫 번째 이미지를 기본 대표 사진으로 설정
 
@@ -72,6 +72,9 @@ const ReviewModal = ({ closeModal, addReview }) => {
       try {
         const response = await fetch("https://campback.thxmin.com/post_tasks", {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: formData,
         });
 

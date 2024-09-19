@@ -72,9 +72,6 @@ const ReviewModal = ({ closeModal, addReview }) => {
       try {
         const response = await fetch("https://campback.thxmin.com/post_tasks", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: formData,
         });
 

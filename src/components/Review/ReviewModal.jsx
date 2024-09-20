@@ -21,15 +21,14 @@ const ReviewModal = ({ closeModal, addReview }) => {
       return;
     }
 
-    // const newImages = files.map((file) => URL.createObjectURL(file));
-    setImages((prevImages) => [...prevImages, ...files]);
+    const newImages = files.map((file) => URL.createObjectURL(file));
+    setImages((prevImages) => [...prevImages, ...newImages]);
 
     // console.log(images);
 
     // 첫 번째 이미지를 기본 대표 사진으로 설정
-
-    if (!featuredImage && files.length > 0) {
-      setFeaturedImage(files[0]);
+    if (!featuredImage && newImages.length > 0) {
+      setFeaturedImage(newImages[0]);
     }
   };
 

@@ -8,6 +8,7 @@ const ReviewModal = ({ closeModal, addReview }) => {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
   const [featuredImage, setFeaturedImage] = useState(null);
 
   const googleId = useSelector((state) => state.auth.authData?.sub);
@@ -21,19 +22,19 @@ const ReviewModal = ({ closeModal, addReview }) => {
       return;
     }
 
-    const newImages = files.map((file) => URL.createObjectURL(file));
-    setImages((prevImages) => [...prevImages, ...newImages]);
+    const newImageUrls = files.map((file) => URL.createObjectURL(file));
 
-    // console.log(images);
+    setImages((prevImages) => [...prevImages, ...files]); // 실제 파일 추가
+    setImagePreviews((prevUrls) => [...prevUrls, ...newImageUrls]); // URL 추가
 
     // 첫 번째 이미지를 기본 대표 사진으로 설정
-    if (!featuredImage && newImages.length > 0) {
-      setFeaturedImage(newImages[0]);
+    if (!featuredImage && newImageUrls.length > 0) {
+      setFeaturedImage(newImageUrls[0]);
     }
   };
 
-  const handleFeaturedImageChange = (image) => {
-    setFeaturedImage(image);
+  const handleFeaturedImageChange = (preview) => {
+    setFeaturedImage(preview);
   };
 
   const handleRemoveImage = (index) => {
@@ -41,8 +42,15 @@ const ReviewModal = ({ closeModal, addReview }) => {
       const updatedImages = prevImages.filter((_, i) => i !== index);
 
       // 대표 사진이 삭제된 경우, 삭제된 사진이 대표 사진이면 목록의 첫 번째 이미지로 설정
-      if (prevImages[index] === featuredImage) {
-        setFeaturedImage(updatedImages.length > 0 ? updatedImages[0] : null);
+      setImagePreviews((prevUrls) => prevUrls.filter((_, i) => i !== index));
+
+      // 대표 사진이 삭제된 경우 처리
+      if (imagePreviews[index] === featuredImage) {
+        setFeaturedImage(
+          updatedImages.length > 0
+            ? URL.createObjectURL(updatedImages[0])
+            : null
+        );
       }
 
       return updatedImages;
@@ -188,10 +196,10 @@ const ReviewModal = ({ closeModal, addReview }) => {
           </div>
 
           <div className="flex flex-wrap gap-4 mt-4">
-            {images.map((image, index) => (
+            {imagePreviews.map((preview, index) => (
               <div key={index} className="relative w-32 h-32">
                 <img
-                  src={image}
+                  src={preview}
                   alt={`미리보기 ${index}`}
                   className="w-full h-full object-cover rounded"
                 />
@@ -204,12 +212,12 @@ const ReviewModal = ({ closeModal, addReview }) => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleFeaturedImageChange(image)}
+                  onClick={() => setFeaturedImage(preview)}
                   className={`absolute bottom-0 left-0 ${
-                    image === featuredImage ? "bg-cyan-500" : "bg-cyan-200"
+                    preview === featuredImage ? "bg-cyan-500" : "bg-cyan-200"
                   } text-black p-1 rounded-full`}
                 >
-                  {image === featuredImage ? "대표 사진" : "대표로 설정"}
+                  {preview === featuredImage ? "대표 사진" : "대표로 설정"}
                 </button>
               </div>
             ))}

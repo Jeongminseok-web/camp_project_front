@@ -122,9 +122,9 @@ const ModalItem = ({ selectedRegion, onClose, areas }) => {
   // 하트 클릭 시 호출되는 함수
 
   const changeAdd = async () => {
-    if (!currentCamping) {
+    if (!googleId) {
       console.error("캠핑장 정보가 없습니다.");
-      toast.error("캠핑장 정보가 없습니다.");
+      toast.error("로그인이 필요한 서비스입니다.");
       return;
     }
     console.log("currentCamping:", currentCamping.facltNm); // 현재 캠핑장 정보 확인

@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPutTaskData } from "../../redux/slices/apiSlice";
 
-const ReviewItem = ({ task, closeModal }) => {
+const ReviewItem = ({ task, onDelete }) => {
   const { images, title, description, date, grade, _id, userid } = task;
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const selectedImages = useState(images);
@@ -48,6 +48,7 @@ const ReviewItem = ({ task, closeModal }) => {
 
         if (response.ok) {
           console.log("Task deleted successfully");
+          onDelete(task._id);
           closeReview();
         } else {
           console.error("Failed to delete task");

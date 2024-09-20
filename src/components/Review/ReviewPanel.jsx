@@ -34,11 +34,18 @@ const ReviewPanel = () => {
     closeModal();
   };
 
+  // 삭제 시 리뷰 상태 업데이트
+  const handleDeleteReview = (taskId) => {
+    setLocalTasks((prevTasks) =>
+      prevTasks.filter((task) => task._id !== taskId)
+    );
+  };
+
   useEffect(() => {
     dispatch(fetchGetTasksData()).then((result) => {
       setLocalTasks(result.payload);
     });
-  }, [dispatch]);
+  }, [dispatch, localTasks]);
 
   // useEffect(() => {
   //   dispatch(fetchGetTasksData()).then((result) => {
@@ -85,6 +92,7 @@ const ReviewPanel = () => {
             task={task}
             imageUrl={`https://campback.thxmin.com/uploads/${task.image}`}
             closeModal={closeModal}
+            onDelete={handleDeleteReview}
           />
         ))}
       </div>

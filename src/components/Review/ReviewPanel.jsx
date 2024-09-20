@@ -30,7 +30,7 @@ const ReviewPanel = () => {
   const closeModal = () => setIsModalOpen(false);
 
   const addReview = (newReview) => {
-    setReviews([...reviews, newReview]);
+    setLocalTasks((prevTasks) => [...prevTasks, newReview]);
     closeModal();
   };
 

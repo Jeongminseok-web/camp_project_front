@@ -58,6 +58,6 @@ OPEN API를 활용하여 사용자에게 필요한 캠핑장 정보를 나타내
 
 프로젝트 참여자 깃허브  
 
-![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/jeongmindol  
+![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/jeongmindol (정민석)  
 
-![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/choimings
+![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)https://github.com/choimings (최민경)
